@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwm4qaw3v21st"]
+
+[ext_resource type="Script" uid="uid://bqcewprigogrv" path="res://spells/spell_Icicle_Rain.gd" id="1_tb8qa"]
+[ext_resource type="Script" uid="uid://dtw66qckkpyvx" path="res://spells/icicle.gd" id="2_aqfx2"]
+[ext_resource type="BoxMesh" uid="uid://dpjwiux7q1kas" path="res://spells/icicleMesh.tres" id="2_gcoxx"]
+[ext_resource type="Shape3D" uid="uid://cidg77lqtxwlk" path="res://spells/icicleCollision.tres" id="4_tvmds"]
+
+[node name="Icicle Rain" type="Node3D"]
+script = ExtResource("1_tb8qa")
+numOfIcicles = 50
+dist = 15
+
+[node name="IcicleTemp" type="RigidBody3D" parent="."]
+visible = false
+script = ExtResource("2_aqfx2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IcicleTemp"]
+visible = false
+mesh = ExtResource("2_gcoxx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IcicleTemp"]
+visible = false
+shape = ExtResource("4_tvmds")

@@ -49,6 +49,8 @@ var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 
+signal spell_Icicle_Rain(dir: float)
+
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
@@ -75,6 +77,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
+			
+	if event.is_action_pressed("spell_Icicle_Rain"):
+		spell_Icicle_Rain.emit(rotation_degrees.y)
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else

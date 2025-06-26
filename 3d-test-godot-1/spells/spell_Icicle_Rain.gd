@@ -1,0 +1,23 @@
+extends Node3D
+
+@export var numOfIcicles := 10
+@export var radius := 5
+@export var dist := 10
+
+func _on_proto_controller_spell_icicle_rain(dir: float) -> void:
+	icicle_rain(dir)
+
+func icicle_rain(dir: float):
+	position = $"../ProtoController".position
+	print(str(position))
+	
+	for i in range(numOfIcicles):
+		var tempdir = 90 - dir
+		var posX = position.x - (dist * cos(deg_to_rad(tempdir)))
+		var posZ = position.z - (dist * sin(deg_to_rad(tempdir)))
+		
+		var randPosX = randf_range(posX-radius, posX+radius)
+		var randPosZ = randf_range(posZ-radius, posZ+radius)
+		var posY = float(position.y + 10)
+		
+		add_sibling(Icicle.new(randPosX, posY, randPosZ))
