@@ -20,4 +20,5 @@ func icicle_rain(dir: float):
 		var randPosZ = randf_range(posZ-radius, posZ+radius)
 		var posY = float(position.y + 10)
 		
+		
 		add_sibling(Icicle.new(randPosX, posY, randPosZ))
