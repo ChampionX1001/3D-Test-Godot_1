@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://be6jhlh0kg5xo"]
+
+[ext_resource type="Material" uid="uid://dupgu5qllytyl" path="res://GreyboxFloor.tres" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_0xm2m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 2.78059e-08, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 44, 0)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.893563, 0, 0, 0, 1, 0, 0, 0)
+use_collision = true
+size = Vector3(100, 0.139, 100)
+material = ExtResource("1_ig7tw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+use_collision = true
+size = Vector3(10, 8, 2)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(1.08, 0, 0, 0, -4.37114e-08, -2.16216, 0, 1, -9.4511e-08, 0, -4, 0.25)
+operation = 2
+radius = 3.0
+height = 6.5
+sides = 64
+
+[node name="ProtoController" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 16)
+can_sprint = true
+can_freefly = true
+input_left = "move_left"
+input_right = "move_right"
+input_forward = "move_forward"
+input_back = "move_backward"
+input_jump = "move_jump"
+input_sprint = "move_sprint"
+input_freefly = "move_freefly"
