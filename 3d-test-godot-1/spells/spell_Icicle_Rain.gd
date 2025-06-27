@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var numOfIcicles := 10
+@export var duration := 2.0
 @export var radius := 5
 @export var dist := 10
 
@@ -10,6 +11,8 @@ func _on_proto_controller_spell_icicle_rain(dir: float) -> void:
 func icicle_rain(dir: float):
 	position = $"../ProtoController".position
 	print(str(position))
+	
+	var delay = duration / numOfIcicles  # total 3 seconds spread across all icicles
 	
 	for i in range(numOfIcicles):
 		var tempdir = 90 - dir
@@ -22,3 +25,5 @@ func icicle_rain(dir: float):
 		
 		
 		add_sibling(Icicle.new(randPosX, posY, randPosZ))
+		
+		await get_tree().create_timer(delay).timeout
