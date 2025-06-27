@@ -14,11 +14,11 @@ func icicle_rain(dir: float):
 	
 	var delay = duration / numOfIcicles  # total 3 seconds spread across all icicles
 	
+	var tempdir = 90 - dir
+	var posX = position.x - (dist * cos(deg_to_rad(tempdir)))
+	var posZ = position.z - (dist * sin(deg_to_rad(tempdir)))
+	
 	for i in range(numOfIcicles):
-		var tempdir = 90 - dir
-		var posX = position.x - (dist * cos(deg_to_rad(tempdir)))
-		var posZ = position.z - (dist * sin(deg_to_rad(tempdir)))
-		
 		var randPosX = randf_range(posX-radius, posX+radius)
 		var randPosZ = randf_range(posZ-radius, posZ+radius)
 		var posY = float(position.y + 10)
