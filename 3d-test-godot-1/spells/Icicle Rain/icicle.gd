@@ -11,10 +11,11 @@ func _init(x:float, y:float, z:float) -> void:
 
 	mesh = MeshInstance3D.new()
 	add_child(mesh)
-	mesh.mesh = preload("res://spells/icicleMesh.tres")
+	mesh.mesh = preload("res://spells/Icicle Rain/icicleMesh.tres")
+	mesh.material_override = preload("res://spells/Icicle Rain/icicle_material.tres")
 	
 	coll = CollisionShape3D.new()	
-	coll.shape = preload("res://spells/icicleCollision.tres")
+	coll.shape = preload("res://spells/Icicle Rain/icicleCollision.tres")
 	add_child(coll)
 	
 	gravity_scale = 2.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dupgu5qllytyl" path="res://GreyboxFloor.tres" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dwm4qaw3v21st" path="res://spells/spell_Icicle_Rain.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dwm4qaw3v21st" path="res://spells/Icicle Rain/spell_Icicle_Rain.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

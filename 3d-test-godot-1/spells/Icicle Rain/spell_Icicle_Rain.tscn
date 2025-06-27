@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwm4qaw3v21st"]
+
+[ext_resource type="Script" uid="uid://bqcewprigogrv" path="res://spells/Icicle Rain/spell_Icicle_Rain.gd" id="1_tb8qa"]
+[ext_resource type="Script" uid="uid://dtw66qckkpyvx" path="res://spells/Icicle Rain/icicle.gd" id="2_aqfx2"]
+
+[node name="Icicle Rain" type="Node3D"]
+script = ExtResource("1_tb8qa")
+
+[node name="IcicleTemp" type="RigidBody3D" parent="."]
+script = ExtResource("2_aqfx2")

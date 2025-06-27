@@ -1,9 +1,9 @@
 extends Node3D
 
-@export var numOfIcicles := 10
+@export var numOfIcicles := 25
 @export var duration := 2.0
 @export var radius := 5
-@export var dist := 10
+@export var dist := 15
 
 func _on_proto_controller_spell_icicle_rain(dir: float) -> void:
 	icicle_rain(dir)
