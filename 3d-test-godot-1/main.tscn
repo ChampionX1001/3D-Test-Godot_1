@@ -60,10 +60,10 @@ height = 64.0
 sides = 64
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 24, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 23.5, 0)
 operation = 2
 radius = 5.0
-height = 64.0
+height = 63.0
 sides = 64
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]

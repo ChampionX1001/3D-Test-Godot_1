@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwm4qaw3v21st"]
+[gd_scene load_steps=6 format=3 uid="uid://dwm4qaw3v21st"]
 
 [ext_resource type="Script" uid="uid://bqcewprigogrv" path="res://spells/Icicle Rain/spell_Icicle_Rain.gd" id="1_tb8qa"]
 [ext_resource type="Script" uid="uid://dtw66qckkpyvx" path="res://spells/Icicle Rain/icicle.gd" id="2_aqfx2"]
+[ext_resource type="Shape3D" uid="uid://03n173lpm1y2" path="res://spells/Icicle Rain/icicle_collision.tres" id="3_7rmri"]
+[ext_resource type="PackedScene" uid="uid://ctbq3nc30t87b" path="res://spells/Icicle Rain/Icicle.glb" id="3_pl4kr"]
+[ext_resource type="Material" uid="uid://chaexolh073i8" path="res://spells/Icicle Rain/icicle_material_1.tres" id="5_8ehoj"]
 
 [node name="Icicle Rain" type="Node3D"]
 script = ExtResource("1_tb8qa")
+numOfIcicles = 50
 
 [node name="IcicleTemp" type="RigidBody3D" parent="."]
 script = ExtResource("2_aqfx2")
+
+[node name="icicle_collision" type="CollisionShape3D" parent="IcicleTemp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+shape = ExtResource("3_7rmri")
+
+[node name="Icicle" parent="IcicleTemp" instance=ExtResource("3_pl4kr")]
+
+[node name="Cube" parent="IcicleTemp/Icicle" index="0"]
+surface_material_override/0 = ExtResource("5_8ehoj")
+
+[editable path="IcicleTemp/Icicle"]
