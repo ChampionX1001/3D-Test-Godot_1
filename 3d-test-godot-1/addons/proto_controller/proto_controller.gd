@@ -2,6 +2,7 @@
 # CC0 License
 # Intended for rapid prototyping of first-person games.
 # Happy prototyping!
+class_name  proto_controller
 
 extends CharacterBody3D
 
@@ -51,6 +52,9 @@ var freeflying : bool = false
 
 signal spell_Icicle_Rain(dir: float)
 
+var confirm_needed := false
+signal spell_confirm
+
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
@@ -80,6 +84,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("spell_Icicle_Rain"):
 		spell_Icicle_Rain.emit(rotation_degrees.y)
+		confirm_needed = true
+		
+	if event.is_action_pressed("spell_confirm") and confirm_needed:
+		spell_confirm.emit()
+		confirm_needed = false
+		
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else

@@ -22,8 +22,9 @@ func _init(x:float, y:float, z:float) -> void:
 	
 	gravity_scale = 2.0
 	mass = 1
-	set_axis_velocity(Vector3(15, -20, 0))
-	rotate_z(3.14/4)
+	set_axis_velocity(Vector3(0, -20, 0))
+	#set_axis_velocity(Vector3(15, -20, 0))
+	#rotate_z(3.14/4)
 	
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
@@ -36,6 +37,6 @@ func _init(x:float, y:float, z:float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	if get_contact_count() > 0:
-		#self.queue_free()
+		self.queue_free()
 		pass
 	

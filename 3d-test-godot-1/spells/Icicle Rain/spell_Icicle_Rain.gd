@@ -18,6 +18,12 @@ func icicle_rain(dir: float):
 	var posX = position.x - (dist * cos(deg_to_rad(tempdir)))
 	var posZ = position.z - (dist * sin(deg_to_rad(tempdir)))
 	
+	var marker = AoE_marker.new(posX, posZ, radius)
+	add_sibling(marker)
+	
+	await $"../ProtoController".spell_confirm
+	marker.delete()
+	
 	for i in range(numOfIcicles):
 		var randPosX = randf_range(posX-radius, posX+radius)
 		var randPosZ = randf_range(posZ-radius, posZ+radius)
@@ -27,3 +33,7 @@ func icicle_rain(dir: float):
 		add_sibling(Icicle.new(randPosX, posY, randPosZ))
 		
 		await get_tree().create_timer(delay).timeout
+
+
+func _on_proto_controller_spell_confirm() -> void:
+	pass # Replace with function body.
