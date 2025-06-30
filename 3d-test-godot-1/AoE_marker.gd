@@ -17,6 +17,11 @@ func _init(x:float, z:float, rad:float) -> void:
 	visible = true
 	
 	print("marking")
+
+func update_pos(x:float, z:float):
+	position.x = x
+	position.y = 0
+	position.z = z
 	
 func delete() -> void:
 	queue_free() 
