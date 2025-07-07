@@ -37,6 +37,6 @@ func _init(x:float, y:float, z:float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	if get_contact_count() > 0:
-		self.queue_free()
+		#self.queue_free()
 		pass
 	

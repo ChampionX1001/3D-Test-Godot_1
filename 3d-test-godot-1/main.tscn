@@ -1,29 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://be6jhlh0kg5xo"]
+[gd_scene load_steps=8 format=3 uid="uid://be6jhlh0kg5xo"]
 
 [ext_resource type="Material" uid="uid://dupgu5qllytyl" path="res://GreyboxFloor.tres" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dwm4qaw3v21st" path="res://spells/Icicle Rain/spell_Icicle_Rain.tscn" id="3_h2yge"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
-sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_h2yge")
 
-[sub_resource type="Environment" id="Environment_1bvp3"]
+[sub_resource type="Environment" id="Environment_lquwl"]
 background_mode = 2
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_1bvp3")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1bvp3")
+environment = SubResource("Environment_lquwl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 2.78059e-08, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 44, 0)
+transform = Transform3D(0.884763, -0.215619, 0.413163, -0.328715, 0.339719, 0.881214, -0.330366, -0.915478, 0.229693, 0, 185, 290)
 shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
@@ -33,7 +38,7 @@ size = Vector3(200, 21, 200)
 material = ExtResource("1_ig7tw")
 
 [node name="ProtoController" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 23.5, 55)
 can_sprint = true
 can_freefly = true
 input_left = "move_left"
@@ -100,9 +105,17 @@ visible = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 11)
+use_collision = true
 radius = 5.0
 radial_segments = 32
 rings = 32
+
+[node name="Label" type="Label" parent="."]
+offset_right = 498.0
+offset_bottom = 275.0
+text = "Click 1 to cast ICICLE RAIN
+LMB to accept cast"
+label_settings = SubResource("LabelSettings_h2yge")
 
 [connection signal="spell_Icicle_Rain" from="ProtoController" to="Icicle Rain" method="_on_proto_controller_spell_icicle_rain"]
 [connection signal="spell_confirm" from="ProtoController" to="Icicle Rain" method="_on_proto_controller_spell_confirm"]
